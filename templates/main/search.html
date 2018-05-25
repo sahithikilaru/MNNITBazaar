@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<h2>Search results:</h2>
+
+{% if match_items %}
+	<div>
+	{% for item in match_items %}
+		{% include 'main/item_entry.html' %}
+	{% endfor %}
+	</div>
+{% else %}
+	Nothing to show!
+{% endif %}
+
+{% endblock %}

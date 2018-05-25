@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+
+
+<h2>You are currently the winning bidder for:</h2>
+
+{% if winning_items %}
+	<div id="listing">
+	{% for item in winning_items %}
+		{% include 'main/item_entry.html' %}
+	{% endfor %}
+	</div>
+{% else %}
+	Nothing right now!
+{% endif %}
+
+<h2>Your bids have been beaten for:</h2>
+
+{% if beaten_items %}
+	<div id="listing">
+	{% for item in beaten_items %}
+		{% include 'main/item_entry.html' %}
+	{% endfor %}
+	<div style="clear:both"></div>
+	</div>
+{% else %}
+	Nothing right now!
+{% endif %}
+
+{% endblock %}

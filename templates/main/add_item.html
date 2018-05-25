@@ -1,0 +1,66 @@
+{% extends 'main/base.html' %}
+{% block title %}Add a New Item{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Add a New Item</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <span class="text-danger small">{{ field.errors }}</span>
+                                </div>
+                                <label class="control-label col-sm-2" for="item_title">{{ field.label_tag }}</label>
+                                <div class="col-sm-10">{{ field }}</div>
+                             </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4>FAQs</h4>
+                    <h3>What do I write in "Title"</h3>
+                    <p>For books mention the title of the book, subject and the author. For cycles mention the company and the model. For any other item the common name will do. </p>
+                    <h3>What to mention in "Description"</h3>
+                    <p>Mention the age of the item, its condition and any other relevant information. Be truthful and precise.</p>
+                    <h3>What to fill in "Category"</h3>
+                    <p>Fill in one of the following - "books", "cycles", "electronics", "household". For any other category fill "other".</p>
+                    <h3>What are some good image logo practices?</h3>
+                    <p>
+                        Have a resolution of 512x512.
+                        Use common image formats such as .JPG, .GIF, or .PNG.
+                        Remain under the 2MB limit.
+                        Square images look best.
+                    </p>
+                    <h3>What is the "Ask" field</h3>
+                    <p>It is used for filling the asking price. This is the base price at which the auction begins.</p>
+                    <h3>What is the format of "Closes"</h3>
+                    <p>YYYY-MM-DD HH-MM-SS. Where Y=year, M=month, D=day, H=hours, M=minutes, S=seconds. It denotes the closing time of the auction.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

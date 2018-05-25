@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<ul id="edits">
+        <a href="{{ BASE_URL }}add_item" type="button" class="btn btn-info" role="button">Add Item</a>
+</ul>
+
+<head>
+<style>
+
+ul  {
+	display: inline;
+	margin-right: 10px;
+	margin-left: 580px;
+	font-size: 40pt;
+}
+
+ul  a {
+	text-decoration: underline;
+
+}
+
+ul .current {
+}
+</style>
+</head>
+
+<h2>You items:</h2>
+
+{% if user_items %}
+	<div id="listing">
+	{% for item in user_items %}
+		{% include 'main/item_entry.html' %}
+	{% endfor %}
+	</div>
+{% else %}
+	Nothing right now!
+{% endif %}
+
+{% endblock %}

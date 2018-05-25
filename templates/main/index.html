@@ -1,0 +1,61 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+
+<ul id="categories">
+	<li {% ifequal category "all" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category=all{% ifnotequal sort 'active' %}&sort={{sort}}{% endifnotequal %}">
+		{% endifequal %}All</a>
+	</li>
+	<li {% ifequal category "books" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category=books{% ifnotequal sort 'active' %}&sort={{sort}}{% endifnotequal %}">
+		{% endifequal %}Books</a>
+	</li>
+	<li {% ifequal category "cycles" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category=cycles{% ifnotequal sort 'active' %}&sort={{sort}}{% endifnotequal %}">
+		{% endifequal %}Cycles</a>
+	</li>
+	<li {% ifequal category "electronics" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category=electronics{% ifnotequal sort 'active' %}&sort={{sort}}{% endifnotequal %}">
+		{% endifequal %}Electronics</a>
+	</li>
+	<li {% ifequal category "household" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category=household{% ifnotequal sort 'active' %}&sort={{sort}}{% endifnotequal %}">
+		{% endifequal %}Household</a>
+	</li>
+	<li {% ifequal category "other" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category=other{% ifnotequal sort 'active' %}&sort={{sort}}{% endifnotequal %}">
+		{% endifequal %}Other</a>
+	</li>
+</ul>
+
+<ul id="sorts">
+	<li {% ifequal sort "active" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category={{category}}">
+		{% endifequal %}Active</a>
+	</li>
+	<li {% ifequal sort "newest" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category={{category}}&sort=newest">
+		{% endifequal %}Newest</a>
+	</li>
+	<li {% ifequal sort "cheapest" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category={{category}}&sort=cheapest">
+		{% endifequal %}Cheapest</a>
+	</li>
+	<li {% ifequal sort "priciest" %} class="current">
+		{% else %}><a href="{{ BASE_URL }}?category={{category}}&sort=priciest">
+		{% endifequal %}Priciest</a>
+	</li>
+</ul>
+
+
+<div id="listing">
+{% for item in item_list %}
+	{% include 'main/item_entry.html' %}
+{% endfor %}
+<div style="clear:both"></div>
+</div> <!-- end item listing -->
+
+
+{% endblock %}
